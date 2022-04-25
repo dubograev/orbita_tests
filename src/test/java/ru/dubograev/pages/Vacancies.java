@@ -10,12 +10,13 @@ import static io.qameta.allure.Allure.step;
 public class Vacancies {
 
     @Step("Click on 'Присоединиться к команде'")
-    public void clickOnButton(String buttonName) {
+    public Vacancies clickOnButton(String buttonName) {
             $(byText(buttonName)).click();
+            return this;
     }
 
     @Step("Check the number of vacancies cards")
-    public void amountOfCards(int size) {
+    public void checkAmountOfCards(int size) {
             $("[class^='specialization-list__list']").$$("[class^='specialization-card__card']")
                     .shouldHave(size(size));
     }

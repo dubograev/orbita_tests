@@ -1,6 +1,7 @@
 package ru.dubograev.tests;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.AllureId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,11 +22,13 @@ public class OrbitaTests extends TestBase {
     private final static String VACANCIES_URL = "/vacancies";
 
     @Test
+    @AllureId("9689")
     @DisplayName("Vacancies test")
     void checkAmountOfVacanciesCards() {
         open(CAREER_URL);
-        vacancies.clickOnButton("Присоединиться к команде");
-        vacancies.amountOfCards(5);
+        vacancies
+                .clickOnButton("Присоединиться к команде")
+                .checkAmountOfCards(5);
     }
 
 //    @ParameterizedTest
@@ -40,7 +43,8 @@ public class OrbitaTests extends TestBase {
 ////        }
 //    }
 
-    @ParameterizedTest(name = "{0} field has the following placeholder: '{1}'")
+    @AllureId("9687")
+    @ParameterizedTest(name = "Card with title {0} has the following description: {1}")
     @CsvSource(value = {
             "Разработка; Java, JavaScript, BigData, DevOps, Architect",
             "Тестирование; QA auto (java), QA auto (python), QA manual",
@@ -53,6 +57,7 @@ public class OrbitaTests extends TestBase {
         $(byText(title)).sibling(0).shouldHave(text(description));
     }
 
+    @AllureId("9688")
     @Test
     @DisplayName("Page title should have header text")
     void titleTest() {
@@ -67,6 +72,7 @@ public class OrbitaTests extends TestBase {
         });
     }
 
+    @AllureId("9690")
     @Test
     @DisplayName("Page console log should not have errors")
     void consoleShouldNotHaveErrorsTest() {
