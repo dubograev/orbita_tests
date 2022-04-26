@@ -1,11 +1,14 @@
 package ru.dubograev.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.AllureId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
 import ru.dubograev.helpers.DriverUtils;
 import ru.dubograev.pages.Vacancies;
 
@@ -29,18 +32,6 @@ public class OrbitaTests extends TestBase {
                 .clickOnButton("Присоединиться к команде")
                 .checkAmountOfCards(5);
     }
-
-//    @ParameterizedTest
-//    @EnumSource(VacanciesCards.class)
-//    void vacanciesCardNames(VacanciesCards title, VacanciesCards description) {
-//        open(VACANCIES_URL);
-//        $(byText(String.valueOf(title))).sibling(0).shouldHave(text(String.valueOf(description)));
-//
-////        ElementsCollection cards = $$("[class^='specialization-card__card']");
-////        for (SelenideElement card : cards) {
-////            $(byText(title).sibling(0).shouldHave(text(String.valueOf(description)));
-////        }
-//    }
 
     @AllureId("9687")
     @ParameterizedTest(name = "Card with title {0} has the following description: {1}")
